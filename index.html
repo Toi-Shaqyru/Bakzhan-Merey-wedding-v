@@ -1,373 +1,1257 @@
 <!doctype html>
 <html lang="kk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Бақжан • Мерей — Тойға шақыру</title>
+  
+<!-- ===== SEO + Social Preview ===== -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Бақжан & Мерей | Үйлену тойы</title>
+<meta name="description" content="26.03.2026 • Шымкент қаласы • Сіздерді тойда күтеміз">
 
-  <style>
-    :root{
-      --bg: #e9e6df;
-      --card: rgba(255,255,255,.55);
-      --text: #1b1b1b;
-      --muted: rgba(27,27,27,.65);
-      --line: rgba(27,27,27,.18);
-      --shadow: 0 18px 50px rgba(0,0,0,.10);
-      --radius: 26px;
-    }
+<!-- Open Graph (WhatsApp / Telegram / Facebook) -->
+<meta property="og:title" content="Бақжан & Мерей | Үйлену тойы">
+<meta property="og:description" content="26.03.2026 • Шымкент қаласы • Сіздерді тойда күтеміз">
+<meta property="og:image" content="https://toi-shaqyru.github.io/Bakzhan-Merey-wedding/assets/preview.jpg">
+<meta property="og:url" content="https://toi-shaqyru.github.io/Bakzhan-Merey-wedding/">
+<meta property="og:type" content="website">
 
-    *{ box-sizing: border-box; }
-    body{
-      margin:0;
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-    }
+<!-- Размер картинки -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-    /* ====== PAGE BACKGROUND (Pinterest image) ====== */
-    .page{
-      min-height: 100svh;
-      display:flex;
-      justify-content:center;
-      padding: 18px 14px 40px;
-      background:
-        radial-gradient(1200px 800px at 50% 10%, rgba(255,255,255,.55), transparent 60%),
-        radial-gradient(900px 600px at 50% 80%, rgba(255,255,255,.35), transparent 65%),
-        url("assets/bg.png");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+<!-- Twitter (на всякий случай) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Бақжан & Мерей | Үйлену тойы">
+<meta name="twitter:description" content="26.03.2026 • Шымкент қаласы">
+<meta name="twitter:image" content="https://toi-shaqyru.github.io/Bakzhan-Merey-wedding/assets/preview.jpg">
+  
+<style>
+/* ================= MOBILE STABILITY FIX (iOS Safari) ================= */
+html, body{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
 
-    /* ====== MAIN CARD ====== */
-    .card{
-      width: min(560px, 100%);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.55));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      border: 1px solid rgba(255,255,255,.55);
-      backdrop-filter: blur(8px);
-    }
+:root{
+  --app-height: 100vh;
+}
 
-    /* optional decorative images */
-    .decor-top, .decor-bottom{
-      position:absolute;
-      pointer-events:none;
-      opacity:.9;
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,.10));
-    }
-    .decor-top{ top:-14px; left:-10px; width: 210px; }
-    .decor-bottom{ bottom:-18px; right:-14px; width: 260px; }
+@supports (height: 100svh){
+  :root{ --app-height: 100svh; }
+}
 
-    /* fallback “emboss flowers” vibe without images */
-    .card::before, .card::after{
-      content:"";
-      position:absolute;
-      inset:auto;
-      width: 220px;
-      height: 220px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.0) 55%),
-        radial-gradient(circle at 70% 65%, rgba(255,255,255,.7), rgba(255,255,255,.0) 60%);
-      opacity:.55;
-      filter: blur(0.2px);
-      pointer-events:none;
-    }
-    .card::before{ top:-70px; left:-70px; }
-    .card::after{ bottom:-90px; right:-90px; opacity:.45; }
+.fullscreen{
+  min-height: var(--app-height);
+}
 
-    header{
-      padding: 34px 22px 18px;
-      text-align:center;
-    }
+body{
+  min-height: var(--app-height);
+}
 
-    .date{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      letter-spacing: .02em;
-      font-size: clamp(34px, 8vw, 52px);
-      line-height: 1.05;
-      margin: 2px 0 14px;
-      display:inline-block;
-      position:relative;
-      padding: 2px 10px;
-    }
+input, textarea, select, button{
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
 
-    /* highlighted date (like your screenshot) */
-    .date::after{
-      content:"";
-      position:absolute;
-      left: 6px;
-      right: 6px;
-      bottom: 4px;
-      height: 12px;
-      background: rgba(0,0,0,.08);
-      border-radius: 999px;
-      z-index:-1;
-      transform: skewX(-8deg);
-    }
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
+  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бақжан Мерей</title>
 
-    .names{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-      font-size: clamp(24px, 6.5vw, 34px);
-      letter-spacing: .01em;
-      margin: 0 0 10px;
-    }
+<style>
 
-    .subtitle{
-      margin: 0 auto;
-      max-width: 38ch;
-      color: var(--muted);
-      font-size: 14.5px;
-      line-height: 1.55;
-    }
+/* ===== ШРИФТЫ ===== */
+@font-face{
+  font-family:"PrimaryFont";
+  src:url("assets/fonts/primary.woff2") format("woff2");
+  font-display:swap;
+}
 
-    .divider{
-      height:1px;
-      background: var(--line);
-      margin: 18px 22px 0;
-    }
+@font-face{
+  font-family:"SecondaryFont";
+  src:url("assets/fonts/secondary.woff2") format("woff2");
+  font-display:swap;
+}
 
-    main{
-      padding: 16px 22px 22px;
-    }
+/* ===== БАЗА ===== */
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:"PrimaryFont", serif;
+}
 
-    .section{
-      padding: 14px 0;
-    }
-    .h{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-      font-size: 20px;
-      margin: 0 0 10px;
-    }
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  min-height: var(--app-height);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:60px 20px;
+  overflow:hidden;
+  text-align:center;
+}
 
-    .row{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 14px;
-      padding: 10px 12px;
-      border: 1px solid rgba(27,27,27,.12);
-      border-radius: 18px;
-      background: rgba(255,255,255,.45);
-    }
-    .row + .row{ margin-top: 10px; }
+.hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
 
-    .label{
-      font-size: 12px;
-      letter-spacing:.08em;
-      text-transform: uppercase;
-      color: rgba(27,27,27,.55);
-      margin-bottom: 4px;
-    }
-    .value{
-      font-size: 15.5px;
-      line-height: 1.45;
-    }
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:-1;
+}
 
-    .program{
-      display:grid;
-      gap: 10px;
-    }
-    .time{
-      font-weight: 600;
-      white-space: nowrap;
-    }
+.hero-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:900px;
+}
 
-    .btns{
-      display:grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    a.btn{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding: 13px 14px;
-      border-radius: 18px;
-      text-decoration:none;
-      color: var(--text);
-      border: 1px solid rgba(27,27,27,.14);
-      background: rgba(255,255,255,.62);
-      font-weight: 500;
-    }
-    a.btn:active{ transform: translateY(1px); }
+.main-title{
+  margin:0;
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  letter-spacing:4px;
+}
 
-    /* countdown */
-    .count{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .pill{
-      background: rgba(255,255,255,.50);
-      border: 1px solid rgba(27,27,27,.12);
-      border-radius: 18px;
-      padding: 10px 8px;
-      text-align:center;
-    }
-    .n{
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-    .t{
-      font-size: 11px;
-      letter-spacing:.08em;
-      text-transform: uppercase;
-      color: rgba(27,27,27,.55);
-      margin-top: 3px;
-    }
+.sub-title{
+  margin-top:18px;
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px); /* 28 максимум */
+  letter-spacing:6px;
+  text-transform:uppercase;
+  opacity:0.92;
+}
 
-    footer{
-      padding: 0 22px 24px;
-      text-align:center;
-      color: rgba(27,27,27,.55);
-      font-size: 12.5px;
-      line-height: 1.5;
-    }
-
-    /* desktop */
-    @media (min-width: 820px){
-      .page{ padding: 34px 18px 60px; }
-      header{ padding: 44px 34px 20px; }
-      main{ padding: 18px 34px 26px; }
-      .divider{ margin: 22px 34px 0; }
-      footer{ padding: 0 34px 30px; }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="page">
-    <article class="card">
-      <!-- OPTIONAL: add these files if you want -->
-      <!-- <img class="decor-top" src="assets/decor-top.png" alt="" /> -->
-      <!-- <img class="decor-bottom" src="assets/decor-bottom.png" alt="" /> -->
 
-      <header>
-        <div class="date">26.03.2026</div>
-        <h1 class="names">Бақжан&nbsp;|&nbsp;Мерей</h1>
-        <p class="subtitle">
-          Құрметті қонақтар, сіздерді қуанышымызға ортақтасып,
-          тойымыздың қадірлі қонағы болуға шақырамыз.
-        </p>
-      </header>
+<header class="hero">
 
-      <div class="divider"></div>
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="assets/bg/hero.mp4" type="video/mp4">
+  </video>
 
-      <main>
-        <section class="section">
-          <h2 class="h">Кері санақ</h2>
-          <div class="count" id="countdown">
-            <div class="pill"><div class="n" id="d">—</div><div class="t">күн</div></div>
-            <div class="pill"><div class="n" id="h">—</div><div class="t">сағ</div></div>
-            <div class="pill"><div class="n" id="m">—</div><div class="t">мин</div></div>
-            <div class="pill"><div class="n" id="s">—</div><div class="t">сек</div></div>
-          </div>
-        </section>
+  <div class="overlay"></div>
 
-        <section class="section">
-          <h2 class="h">Бағдарлама</h2>
-          <div class="program">
-            <div class="row">
-              <div>
-                <div class="label">Басталуы</div>
-                <div class="value"><span class="time">18:00</span> — Беташар</div>
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <div class="label">Жалғасы</div>
-                <div class="value"><span class="time">19:00</span> — Той</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2 class="h">Өтетін орны</h2>
-          <div class="row">
-            <div>
-              <div class="label">Мейрамхана</div>
-              <div class="value">Shymkent Hall</div>
-              <div class="value" style="color: rgba(27,27,27,.65); font-size:14px;">
-                Проспект Байдібек би, 246/3
-              </div>
-            </div>
-          </div>
-
-          <div class="btns">
-            <!-- Google Maps search link -->
-            <a class="btn" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=Shymkent%20Hall%20%D0%91%D0%B0%D0%B9%D0%B4%D1%96%D0%B1%D0%B5%D0%BA%20%D0%B1%D0%B8%20246%2F3">
-              Карта (Google Maps)
-            </a>
-
-            <!-- 2GIS search link (works as search) -->
-            <a class="btn" target="_blank" rel="noopener"
-               href="https://2gis.kz/search/Shymkent%20Hall%20%D0%91%D0%B0%D0%B9%D0%B4%D1%96%D0%B1%D0%B5%D0%BA%20%D0%B1%D0%B8%20246%2F3">
-              Карта (2GIS)
-            </a>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div>Күні: <strong>26.03.2026</strong></div>
-        <div style="margin-top:6px;">Сізді күтеміз 🤍</div>
-      </footer>
-    </article>
+  <div class="hero-content">
+    <h1 class="main-title">Бақжан Мерей</h1>
+    <div class="sub-title">ҮЙЛЕНУ ТОЙЫ</div>
   </div>
 
-  <script>
-    // Countdown to event date/time (local time)
-    // If you want exact start time: set "2026-03-26T18:00:00"
-    const target = new Date("2026-03-26T18:00:00");
+</header>
 
-    const $d = document.getElementById("d");
-    const $h = document.getElementById("h");
-    const $m = document.getElementById("m");
-    const $s = document.getElementById("s");
-
-    function pad(n){ return String(n).padStart(2, "0"); }
-
-    function tick(){
-      const now = new Date();
-      let diff = target - now;
-
-      if(diff <= 0){
-        $d.textContent = "00";
-        $h.textContent = "00";
-        $m.textContent = "00";
-        $s.textContent = "00";
-        return;
-      }
-
-      const sec = Math.floor(diff / 1000);
-      const days = Math.floor(sec / 86400);
-      const hrs  = Math.floor((sec % 86400) / 3600);
-      const mins = Math.floor((sec % 3600) / 60);
-      const secs = sec % 60;
-
-      $d.textContent = pad(days);
-      $h.textContent = pad(hrs);
-      $m.textContent = pad(mins);
-      $s.textContent = pad(secs);
-    }
-
-    tick();
-    setInterval(tick, 1000);
-  </script>
 </body>
 </html>
+
+<!-- ================= SECTION 1 ================= -->
+
+<style>
+.section1{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section1_bg.jpg") center/cover no-repeat; /* 👈 JPG */
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:9vh; /* 👈 было 12vh, теперь выше */
+  padding-left:20px;
+  padding-right:20px;
+  text-align:center;
+  color:#000;
+}
+
+/* Белый overlay */
+.section1::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.40);
+  z-index:0;
+}
+
+.section1-content{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+  width:100%;
+}
+
+/* ===== PRIMARY ===== */
+.s1-primary{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.05; /* 👈 было 1.1, теперь плотнее */
+  margin:0;
+}
+
+/* ===== SECONDARY ===== */
+.s1-secondary{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  line-height:1.15; /* 👈 плотнее */
+  margin:0;
+}
+
+/* Отступы между группами */
+.group{
+  margin-top:22px; /* 👈 было 28px */
+}
+</style>
+
+<section class="section1">
+  <div class="section1-content">
+
+    <div>
+      <p class="s1-primary">Құрметті</p>
+      <p class="s1-primary">қонақтар!</p>
+    </div>
+
+    <div class="group">
+      <p class="s1-secondary">СІЗДЕРДІ</p>
+      <p class="s1-secondary">БАЛАЛАРЫМЫЗ</p>
+    </div>
+
+    <div class="group">
+      <p class="s1-primary">Бақжан мен</p>
+      <p class="s1-primary">Мерейдің</p>
+    </div>
+
+    <div class="group">
+      <p class="s1-secondary">ҮЙЛЕНУ ТОЙЫНА</p>
+      <p class="s1-secondary">АРНАЛҒАН</p>
+      <p class="s1-secondary">САЛТАНАТТЫ АҚ</p>
+      <p class="s1-secondary">ДАСТАРХАНЫМЫЗДЫҢ</p>
+      <p class="s1-secondary">ҚАДІРЛІ ҚОНАҒЫ</p>
+      <p class="s1-secondary">БОЛУҒА ШАҚЫРАМЫЗ!</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SECTION 2 ================= -->
+
+<style>
+.section2{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section2_bg.png") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+  text-align:center;
+  color:#000;
+}
+
+.section2::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.35);
+  z-index:0;
+}
+
+.section2-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:900px;
+}
+
+/* Текст */
+.section2-top{
+  margin-top:30vh;
+}
+
+.section2-bottom{
+  margin-bottom:26vh;
+  position:relative;
+}
+
+.primary-text{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.12; /* чуть безопаснее чтобы не резало */
+  margin:0;
+}
+
+/* Calendar block */
+.calendar-wrapper{
+  position:relative;
+  display:inline-block;
+}
+
+.calendar-img{
+  width:415px;
+  max-width:85vw;
+  height:auto;
+  display:block; /* важно для стабильного layout */
+}
+
+/* ✅ Пульс БЕЗ сдвига позиции */
+@keyframes pulse{
+  0%   { transform:translate(-50%, -50%) scale(1); }
+  50%  { transform:translate(-50%, -50%) scale(1.15); }
+  100% { transform:translate(-50%, -50%) scale(1); }
+}
+
+.heart-img{
+  position:absolute;
+
+  /* 🎯 точка крепления сердца */
+  top:79%;
+  left:51.5%;
+
+  /* ✅ всегда центрируем по этой точке */
+  transform:translate(-50%, -50%);
+
+  width:36px;
+  height:auto;
+  display:block;
+
+  animation:pulse 1.6s ease-in-out infinite;
+  will-change:transform;
+}
+</style>
+
+<section class="section2">
+
+  <div class="section2-content section2-top">
+    <p class="primary-text">Той салтанаты:</p>
+    <p class="primary-text">26.03.2026</p>
+  </div>
+
+  <div class="section2-content section2-bottom">
+    <div class="calendar-wrapper">
+      <img src="assets/bg/calendar.png" class="calendar-img" alt="calendar">
+      <img src="assets/bg/heart.png" class="heart-img" alt="heart">
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 3 ================= -->
+
+<style>
+.section3{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section3_bg.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:0 20px;
+  text-align:center;
+  color:#fff;
+}
+
+/* чёрный overlay */
+.section3::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:0;
+}
+
+.section3-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:900px;
+  margin-top:30vh; /* старт ~30% сверху */
+}
+
+/* общий Primary размер (как договорились) */
+.primary-text{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.2;  /* 👈 увеличили */
+  padding-top:6px;  /* 👈 добавили воздух сверху */
+  margin:0;
+}
+
+/* общий Secondary размер (как договорились) */
+.secondary-text{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  margin:0;
+  opacity:0.95;
+}
+
+/* строка времени с линиями */
+.time-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-top:22px;
+  padding:0 5vw; /* линии не доходят до краёв ~5% */
+}
+
+.time-row .line{
+  height:1px;
+  background:rgba(255,255,255,0.9);
+  flex:1;
+}
+
+.time-row .time{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(34px,7.2vw,60px); /* чуть меньше, чем заголовок, но всё ещё primary */
+  letter-spacing:2px;
+  line-height:1;
+  white-space:nowrap;
+}
+
+/* отступ между блоками 18:00/19:00 */
+.block-gap{
+  margin-top:26px; /* "чуть больше" */
+}
+</style>
+
+<section class="section3">
+  <div class="section3-content">
+
+    <p class="primary-text">Бағдарлама:</p>
+
+    <!-- 18:00 -->
+    <div class="time-row">
+      <div class="line"></div>
+      <div class="time">18:00</div>
+      <div class="line"></div>
+    </div>
+    <p class="secondary-text">БЕТАШАР</p>
+
+    <!-- 19:00 -->
+    <div class="time-row block-gap">
+      <div class="line"></div>
+      <div class="time">19:00</div>
+      <div class="line"></div>
+    </div>
+    <p class="secondary-text">ТОЙ БАСТАЛУЫ</p>
+
+  </div>
+</section>
+
+<!-- ================= SECTION 4 ================= -->
+
+<style>
+.section4{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section4_bg.png") center/cover no-repeat;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:12vh;
+  padding-left:20px;
+  padding-right:20px;
+  text-align:center;
+  color:#000;
+}
+
+.section4::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.40);
+  z-index:0;
+}
+
+.section4-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:900px;
+}
+
+/* PRIMARY */
+.s4-primary{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.15; /* чуть больше межстрочное */
+  margin:0;
+}
+
+/* SECONDARY */
+.s4-secondary{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  line-height:1.25; /* чуть больше */
+  margin:12px 0 0 0;
+}
+
+/* Картинка ресторана (-20%) */
+.restraunt-img{
+  width:220px; /* было 280 */
+  max-width:60vw;
+  height:auto;
+  margin:28px auto;
+  display:block;
+}
+
+/* ===== КНОПКА ===== */
+.map-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-top:56px; /* кнопка ниже */
+  padding:14px 40px 14px 60px;
+  border-radius:999px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(14px,3.5vw,20px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  overflow:hidden;
+  transition:all 0.4s ease;
+}
+
+/* Блеск */
+.map-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform:skewX(-20deg);
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0% { left:-120%; }
+  60% { left:120%; }
+  100% { left:120%; }
+}
+
+/* Иконка 2GIS */
+.map-btn img{
+  position:absolute;
+  left:8px;
+  height:100%;
+  max-height:42px;
+  width:auto;
+  border-radius:8px;
+  object-fit:cover;
+}
+</style>
+
+<section class="section4">
+  <div class="section4-content">
+
+    <p class="s4-primary">Мекенжай:</p>
+
+    <img src="assets/bg/restraunt.png" class="restraunt-img" alt="Shymkent Hall">
+
+    <p class="s4-secondary">ШЫМКЕНТ ҚАЛАСЫ</p>
+    <p class="s4-secondary">БӘЙДІБЕК БИ, 246/3</p>
+
+    <p class="s4-primary" style="margin-top:22px;">Shymkent Hall</p>
+
+    <p class="s4-secondary">МЕЙРАМХАНАСЫ</p>
+
+    <a href="https://2gis.kz/shymkent/geo/70000001025888783/69.614775,42.351510" 
+       target="_blank" 
+       class="map-btn">
+        <img src="assets/bg/2gis.png" alt="2GIS">
+        КАРТАНЫ АШУ
+    </a>
+
+  </div>
+</section>
+
+<!-- ================= SECTION 5 ================= -->
+
+<style>
+.section5{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section5_bg.png") center/cover no-repeat;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:12vh;
+  padding-left:20px;
+  padding-right:20px;
+  text-align:center;
+  color:#000;
+}
+
+.section5::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.65);
+  z-index:0;
+}
+
+.section5-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:700px;
+}
+
+/* PRIMARY */
+.s5-primary{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.1;
+  margin:0;
+}
+
+/* SECONDARY */
+.s5-secondary{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-top:28px;
+}
+
+.rsvp-form{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+/* Поле имени: secondary + капс + больше размер */
+.rsvp-form input[type="text"]{
+  padding:16px 20px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.25);
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.2vw,26px);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  text-align:center;
+  background:#fff;
+  outline:none;
+}
+
+.radio-group{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:12px;
+}
+
+.radio-option{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(16px,4vw,22px);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.submit-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:30px;
+  padding:14px 40px;
+  border-radius:999px;
+  background:#000;
+  color:#fff;
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(14px,3.5vw,20px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  border:none;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.submit-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform:skewX(-20deg);
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0% { left:-120%; }
+  60% { left:120%; }
+  100% { left:120%; }
+}
+
+/* ===== MODAL (оверлей + стеклянная карточка) ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.28s ease;
+  z-index:9999;
+  padding:20px;
+}
+
+.modal.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.modal-card{
+  width:min(520px, 92vw);
+  border-radius:22px;
+  padding:34px 28px;
+  background:rgba(255,255,255,0.86);
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,0.55);
+  box-shadow:0 18px 50px rgba(0,0,0,0.25);
+  transform:translateY(8px) scale(0.98);
+  transition:transform 0.28s ease;
+}
+
+.modal.active .modal-card{
+  transform:translateY(0) scale(1);
+}
+
+.modal-text{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,5vw,28px);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#000;
+  line-height:1.25;
+}
+
+.modal-btn{
+  margin-top:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 26px;
+  border-radius:999px;
+  border:none;
+  background:#000;
+  color:#fff;
+  font-family:"SecondaryFont", serif;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:clamp(12px,3.4vw,16px);
+  cursor:pointer;
+}
+</style>
+
+<section class="section5">
+  <div class="section5-content">
+
+    <p class="s5-primary">Тойға келетініңізді</p>
+    <p class="s5-primary">растауыңызды өтінеміз</p>
+
+    <!-- ВАЖНО: нет action/method -->
+    <form class="rsvp-form" id="rsvpForm">
+
+      <label class="s5-secondary">АТЫ-ЖӨНІҢІЗ</label>
+      <input type="text" name="Имя" required>
+
+      <label class="s5-secondary">ТОЙҒА КЕЛЕСІЗ БЕ?</label>
+
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="Ответ" value="ӘРИНЕ КЕЛЕМІН" required>
+          ӘРИНЕ КЕЛЕМІН
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="Ответ" value="ЖҰБАЙЫММЕН КЕЛЕМІН">
+          ЖҰБАЙЫММЕН КЕЛЕМІН
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="Ответ" value="ӨКІНІШКЕ ОРАЙ, КЕЛЕ АЛМАЙМЫН">
+          ӨКІНІШКЕ ОРАЙ, КЕЛЕ АЛМАЙМЫН
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">ЖІБЕРУ</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="successModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <div class="modal-text">ЖАУАБЫҢЫЗ ҮШІН РАҚМЕТ</div>
+    <button class="modal-btn" id="closeModalBtn" type="button">ЖАБЫП ЖІБЕРУ</button>
+  </div>
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbzLgSU-FFUckggCxVGP-r16wovrKfZdqVNbwF5e4QtgkIe1TGqAd589VWK58BetfikkJg/exec";
+
+const form = document.getElementById("rsvpForm");
+const modal = document.getElementById("successModal");
+const closeBtn = document.getElementById("closeModalBtn");
+
+function openModal(){
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function closeModal(){
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  // Если CORS мешает читать ответ — не страшно, мы просто отправляем
+  fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  });
+
+  openModal();
+  form.reset();
+});
+
+closeBtn.addEventListener("click", closeModal);
+
+// закрытие кликом по фону
+modal.addEventListener("click", function(e){
+  if(e.target === modal) closeModal();
+});
+
+// закрытие по ESC
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closeModal();
+});
+</script>
+
+
+<!-- ================= SECTION 6 (FINAL) ================= -->
+
+<style>
+.section6{
+  position:relative;
+  min-height: var(--app-height);
+  background:url("assets/bg/section6_bg.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:12vh;
+  padding-left:20px;
+  padding-right:20px;
+  text-align:center;
+  color:#fff;
+}
+
+.section6::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  z-index:0;
+}
+
+.section6-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:1000px;
+}
+
+/* PRIMARY */
+.s6-primary{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(42px,8.8vw,72px);
+  line-height:1.12;
+  margin:0;
+  color:#fff;
+}
+
+/* SECONDARY */
+.s6-secondary{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(18px,4.5vw,28px);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  line-height:1.25;
+  margin:12px 0 0 0;
+  color:#fff;
+  opacity:0.95;
+}
+
+/* ===== Таймер ===== */
+.timer{
+  margin-top:36px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:14px;
+  flex-wrap:nowrap;
+}
+
+.timer-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.timer-number{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(36px,7vw,70px);
+  line-height:1;
+  letter-spacing:2px;
+}
+
+.timer-label{
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(12px,3.2vw,18px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-top:10px;
+  opacity:0.9;
+}
+
+.timer-separator{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(36px,7vw,70px);
+  line-height:1;
+  padding-bottom:22px;
+}
+
+/* ⬇️ Отступ увеличили в 2 раза */
+.s6-gap{
+  margin-top:140px; /* было 70px */
+}
+
+/* Блок имён */
+.names-block{
+  margin-top:22px;
+}
+
+.ampersand{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(36px,7vw,60px);
+  margin:10px 0;
+}
+</style>
+
+<section class="section6">
+  <div class="section6-content">
+
+    <p class="s6-primary">Тойға дейін:</p>
+
+    <div class="timer">
+      <div class="timer-item">
+        <div class="timer-number" id="cd-days">00</div>
+        <div class="timer-label">КҮН</div>
+      </div>
+
+      <div class="timer-separator">:</div>
+
+      <div class="timer-item">
+        <div class="timer-number" id="cd-hours">00</div>
+        <div class="timer-label">САҒ</div>
+      </div>
+
+      <div class="timer-separator">:</div>
+
+      <div class="timer-item">
+        <div class="timer-number" id="cd-mins">00</div>
+        <div class="timer-label">МИН</div>
+      </div>
+
+      <div class="timer-separator">:</div>
+
+      <div class="timer-item">
+        <div class="timer-number" id="cd-secs">00</div>
+        <div class="timer-label">СЕК</div>
+      </div>
+    </div>
+
+    <div class="s6-gap">
+      <p class="s6-primary">Келіңіздер,</p>
+      <p class="s6-primary">тойымыздың</p>
+      <p class="s6-primary">қадірлі қонағы</p>
+      <p class="s6-primary">болыңыздар!</p>
+
+      <p class="s6-secondary" style="margin-top:28px;">ҚҰРМЕТПЕН</p>
+      <p class="s6-secondary">ТОЙ ИЕЛЕРІ:</p>
+
+      <div class="names-block">
+        <p class="s6-primary">Жандаулет</p>
+        <div class="ampersand">&</div>
+        <p class="s6-primary">Камшат</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  const target = new Date(2026, 2, 26, 19, 0, 0);
+
+  const elDays = document.getElementById("cd-days");
+  const elHours = document.getElementById("cd-hours");
+  const elMins = document.getElementById("cd-mins");
+  const elSecs = document.getElementById("cd-secs");
+
+  function pad(n){
+    return String(n).padStart(2, "0");
+  }
+
+  function tick(){
+    const now = new Date();
+    let diff = target.getTime() - now.getTime();
+    if(diff < 0) diff = 0;
+
+    const sec = Math.floor(diff / 1000);
+    const days = Math.floor(sec / 86400);
+    const hours = Math.floor((sec % 86400) / 3600);
+    const mins = Math.floor((sec % 3600) / 60);
+    const secs = sec % 60;
+
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+
+<!-- ===== BACKGROUND MUSIC ===== -->
+<audio id="bgMusic" preload="auto" loop playsinline>
+  <source src="assets/bg/music_bg.mp3" type="audio/mpeg">
+</audio>
+
+<style>
+.entry-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.70);
+  backdrop-filter: blur(8px);
+  transition: opacity .55s ease, visibility .55s ease;
+}
+.entry-overlay.hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.envelope-wrap{
+  width:min(360px, 86vw);
+  aspect-ratio: 4 / 3;
+  position:relative;
+  transform:translateZ(0);
+  user-select:none;
+}
+.envelope{
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 22px 65px rgba(0,0,0,0.45);
+  overflow:hidden;
+}
+
+.env-front-left,
+.env-front-right{
+  position:absolute;
+  bottom:-10%;
+  width:60%;
+  height:70%;
+  background:rgba(255,255,255,0.14);
+  transform:rotate(45deg);
+}
+.env-front-left{ left:-20%; }
+.env-front-right{ right:-20%; }
+
+.env-flap{
+  position:absolute;
+  left:0; right:0; top:0;
+  height:55%;
+  transform-origin: top center;
+  background:linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.10));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-top-left-radius:22px;
+  border-top-right-radius:22px;
+  border:1px solid rgba(255,255,255,0.18);
+  border-bottom:none;
+  transform:rotateX(0deg);
+  transition: transform .7s cubic-bezier(.2,.9,.2,1);
+}
+
+.letter{
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:10%;
+  height:70%;
+  border-radius:18px;
+  background:rgba(255,255,255,0.85);
+  box-shadow:0 12px 35px rgba(0,0,0,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  transform:translateY(18%);
+  transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .35s ease;
+}
+
+.letter-text{
+  font-family:"PrimaryFont", serif;
+  font-size:clamp(28px,6.5vw,46px);
+  color:#000;
+  text-align:center;
+  line-height:1.05;
+}
+
+.tap-hint{
+  margin-top:18px;
+  font-family:"SecondaryFont", serif;
+  font-size:clamp(12px,3.4vw,16px);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.85);
+  text-align:center;
+}
+
+.entry-overlay.opening .env-flap{
+  transform:rotateX(165deg);
+}
+.entry-overlay.opening .letter{
+  transform:translateY(-12%);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .env-flap, .letter, .entry-overlay{ transition:none !important; }
+}
+</style>
+
+<div class="entry-overlay" id="entryOverlay">
+  <div>
+    <div class="envelope-wrap">
+      <div class="envelope">
+        <div class="env-flap"></div>
+        <div class="env-front-left"></div>
+        <div class="env-front-right"></div>
+        <div class="letter">
+          <div class="letter-text">Шақыру хатты ашу</div>
+        </div>
+      </div>
+    </div>
+    <div class="tap-hint">ТҮРТІҢІЗ</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay = document.getElementById("entryOverlay");
+  const audio = document.getElementById("bgMusic");
+  let started = false;
+
+  function fadeInAudio(aud, targetVol=0.75, ms=1600){
+    aud.volume = 0;
+    const steps = 30;
+    const stepMs = ms / steps;
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      aud.volume = Math.min(targetVol, (targetVol * i) / steps);
+      if(i >= steps) clearInterval(t);
+    }, stepMs);
+  }
+
+  async function startExperience(){
+    if(started) return;
+    started = true;
+
+    overlay.classList.add("opening");
+
+    try{
+      audio.currentTime = 0;
+      await audio.play();            // запускаем строго по жесту
+      fadeInAudio(audio, 0.75, 1600);
+    }catch(err){
+      console.log("Audio blocked:", err);
+    }
+
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+    }, 750);
+
+    document.removeEventListener("click", startExperience);
+    document.removeEventListener("touchstart", startExperience);
+  }
+
+  document.addEventListener("click", startExperience, { passive:true });
+  document.addEventListener("touchstart", startExperience, { passive:true });
+})();
+</script>
+
+
+
+
+
+
+
+
