@@ -36,11 +36,11 @@ html, body{
 }
 
 :root{
-  --app-height: 100vh;
+  --app-height: 90vh;
 }
 
-@supports (height: 100svh){
-  :root{ --app-height: 100svh; }
+@supports (height: 90svh){
+  :root{ --app-height: 90svh; }
 }
 
 .fullscreen{
@@ -146,7 +146,7 @@ body{
 
 <header class="hero">
 
-  <video autoplay muted loop playsinline preload="auto">
+  <video autoplay muted loop playsinline preload="none">
     <source src="assets/bg/hero.mp4" type="video/mp4">
   </video>
 
@@ -249,6 +249,7 @@ body{
   </div>
 </section>
 
+
 <!-- ================= SECTION 2 ================= -->
 
 <style>
@@ -313,13 +314,6 @@ body{
   100% { transform:translate(-60%, -50%) scale(1); }
 }
 
-.heart-img{
-  position:absolute;
-  top:79%;
-  left:51.5%;
-  width:36px;
-  animation:pulse 1.6s ease-in-out infinite;
-}
 </style>
 
 <section class="section2">
@@ -331,8 +325,7 @@ body{
 
   <div class="section2-content section2-bottom">
     <div class="calendar-wrapper">
-      <img src="assets/bg/calendar.png" class="calendar-img" alt="calendar">
-      <img src="assets/bg/heart.png" class="heart-img" alt="heart">
+      <img src="assets/bg/calendar.png" loading="lazy" decoding="async" class="calendar-img" alt="calendar">
     </div>
   </div>
 
@@ -413,6 +406,9 @@ body{
   white-space:nowrap;
 }
 
+/* отступ между блоками 18:00/19:00 */
+.block-gap{
+  margin-top:26px; /* "чуть больше" */
 }
 </style>
 
@@ -428,7 +424,7 @@ body{
       <div class="line"></div>
     </div>
     <p class="secondary-text">ТОЙ БАСТАЛУЫ</p>
-
+    
   </div>
 </section>
 
@@ -1049,7 +1045,7 @@ document.addEventListener("keydown", function(e){
 
 
 <!-- ===== BACKGROUND MUSIC ===== -->
-<audio id="bgMusic" preload="auto" loop playsinline>
+<audio id="bgMusic" preload="none" loop playsinline>
   <source src="assets/bg/music_bg.mp3" type="audio/mpeg">
 </audio>
 
@@ -1222,7 +1218,6 @@ document.addEventListener("keydown", function(e){
   document.addEventListener("touchstart", startExperience, { passive:true });
 })();
 </script>
-
 
 
 
